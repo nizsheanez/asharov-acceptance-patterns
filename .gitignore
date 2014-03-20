@@ -1,0 +1,5 @@
+/yii
+/composer.lock
+.idea
+/environments
+/vendor

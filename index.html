@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Git - Alex Sharov</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="Alex Sharov">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write('<link rel="stylesheet" href="css/print/' + ( window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section>
+    <h1>Git - Introduction</h1>
+
+    <h3>What we want?</h3>
+
+    <h3>What inside?</h3>
+
+    <h3>Workflow</h3>
+
+    <h3>Lets try to code interactive</h3>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <p>
+        <small>Author - Alex Sharov</small>
+    </p>
+</section>
+
+<!--<section>-->
+<!--<h3>What is git?</h3>-->
+<!---->
+<!--<p>-->
+<!--Git - Content-addressable filesystem with a VCS user interface written on top of it-->
+<!--</p>-->
+<!--</section>-->
+
+<section>
+    <section>
+        <h2>What we want?</h2>
+
+        <p>
+        <ul>
+            <li>Feature management</li>
+            <li>Release management</li>
+        </ul>
+        </p>
+    </section>
+
+</section>
+
+<!-- Example of nested vertical slides -->
+<section>
+    <section>
+        <h2>What inside?</h2>
+
+        <p>
+        </p>
+    </section>
+    <section>
+        <h2>File sates</h2>
+
+        <p class="fragment">
+            <img src="img/file_state_1.png">
+        </p>
+
+        <p class="fragment">
+            <img src="img/file_state_2.png">
+        </p>
+    </section>
+
+    <section>
+        <h2>Commit states</h2>
+
+        <p>
+            Actually commit doesn't have states. Commit just exists. Always
+            <img src="img/objects-example.png" style="max-height: 80%; max-width: 80%;"/>
+        </p>
+
+    </section>
+
+    <section>
+        <h2>References</h2>
+
+        <p>
+        <ul>
+            <li>Commits - tree<br/>
+                Then commit can has more than one parent - merge commit
+            </li>
+            <li>Branches/Tags - it's just references on some commit</li>
+            <li>When you merging branches - you operate by commits, not by files/folders</li>
+        </ul>
+        </p>
+
+    </section>
+
+    <section>
+        <h2>Branches states</h2>
+
+        <p>
+        <ul>
+            <li>Exists local branches and remote</li>
+            <li class="fragment">All what you do, usually working with ACTIVE LOCAL branch</li>
+            <li class="fragment">After you complete feature you must to push it to remote repository (git push)</li>
+            <li class="fragment">Multiple remote repositories <span class="fragment">(Why we need it? Next slide)</span>
+            </li>
+        </ul>
+        </p>
+
+    </section>
+
+    <section>
+        <h2>How usually working open source projects</h2>
+
+        <p>
+        <ul>
+            <li>Exists official project repository (upstream)</li>
+            <li>You have no access to push in upstream</li>
+            <li>You make fork (origin)</li>
+            <li>Implement feature (local)</li>
+            <li>Push to origin</li>
+            <li>Send Pull Request to upstream</li>
+            <li>When upstream manager will review feature, he will accept your Pull Request</li>
+            <li>When you need update local repository from upstream, you do:
+                <pre><code>git pull [--rebase] upstream</code></pre>
+            </li>
+        </ul>
+        </p>
+
+    </section>
+
+</section>
+
+<section>
+    <section>
+        <h2>Workflow</h2>
+    </section>
+    <section>
+        <h2>Question: What is stable?</h2>
+        <br/>
+
+        <h2 class="fragment">Answer: What we have on live</h2>
+    </section>
+    <section>
+        <h2>Lazada Workflow</h2>
+
+        <p>
+            <img src="img/workflow.png" alt="" style="height: 593px !important; width: 477px !important;"/>
+        </p>
+    </section>
+    <section>
+        <h2>Stability</h2>
+
+        <p>
+            master -> releases -> features<br/><br/>
+            stable ----------------> unstable
+        </p>
+    </section>
+    <section>
+        <h2>Feature management</h2>
+
+        <p>
+        <ul>
+            <li>When we start feature from master, then we can deploy any multiple of features</li>
+            <li>We can use merge! Because we will not loose author of code</li>
+        </ul>
+        </p>
+    </section>
+
+</section>
+
+<section>
+    <section>
+        <h2>Lets try to code interactive</h2>
+    </section>
+    <section>
+        <h2>Part 1 - First commit</h2>
+
+        <p>
+            <pre><code class="noident">git init
+                git add
+                git commit
+                git commit //commit not added file</code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2>Part 2 - branches</h2>
+
+        <p>
+        <pre><code class="noident">git branch
+            git checkout
+            git merge
+            git commit -am
+            git branch -l
+            git branch -la
+            git branch -lr</code></pre>
+        </p>
+    </section>
+    <section>
+        <h2>Part 3 - rebase</h2>
+
+        <p>
+        <pre><code class="noident">git rebase
+            git rm //vs just rm</code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2>Part 4 - log</h2>
+
+        <p>
+        <pre><code class="noident">git log
+            git log -3
+            git config --global core.pager cat
+            git log -1 --format="%H %an %cn"
+            git status
+            git config --global color.ui true //colorize output :-)
+            git config --global core.editor "vim"</code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2>Part 5 - remote branches</h2>
+
+        <p>
+        <pre><code class="noident">git remote add
+            git remote rm
+            git remote show
+            git remote show origin</code></pre>
+        </p>
+    </section>
+    <section>
+        <h2>Part 6 - tags</h2>
+
+        <p>
+        <pre><code class="noident">git tag
+            git push --tags
+            git checkout v0.0.1</code></pre>
+        </p>
+    </section>
+    <section>
+        <h2>Part 7 - branch naming</h2>
+
+        <p>
+        <ul>
+            <li>Problem: need to split all branches to groups. Bugs/Issues/Core/BlaBla</li>
+            <li>issues_* vs issues/*</li>
+        </ul>
+        </p>
+    </section>
+
+</section>
+
+<section>
+    <section>
+        <h2>Globally - why Git</h2>
+
+
+    </section>
+    <section>
+        <h2>Why Git is good for feature management</h2>
+
+        <p>
+        <ul>
+            <li>Very cheap branching(not copy based)</li>
+            <li>Supports isolating feature work (no more commits to trunk)</li>
+            <li>Awesome Bitbucket and Jira integration</li>
+            <li>If somebody do Code review or Integration for you<br/>
+                Annotations (svn blame) will still show your name
+            </li>
+            <li>I never waited until merging will finish at Friday evening</li>
+        </ul>
+        </p>
+    </section>
+
+    <section>
+        <h2>2014! Are you F.... serious?</h2>
+
+        <p>
+            <img src="img/svn_interface.png" alt=""/>
+        </p>
+    </section>
+
+    <section>
+        <h2>Why Git is good for release management</h2>
+
+        <p>
+        <ul>
+            <li>Branches/Tags - it's just references on some commit<br/>
+                Then delete last N commits from branch - super fast operation
+            </li>
+            <li>
+                If branch 1 start from HEAD of branch 2, then for merging 1 to 2<br/>
+                You need just change HEAD of branch 2
+            </li>
+            <li>It's called - fast-forwarding</li>
+            <li>Of course it's optional</li>
+        </ul>
+        </p>
+    </section>
+    <section>
+        <h2>Git thinks - "Sysadmins are humans"</h2>
+
+        <ul>
+            <li>Access - build on SSH</li>
+            <li>Build in backup</li>
+            <li>If you want to host Bitbucket on our servers, use
+                <a href="https://www.atlassian.com/software/stash" target="_blank">Stash</a><br/>
+                With same awesome Jira integration
+            </li>
+        </ul>
+
+    </section>
+
+
+</section>
+<section>
+    <section>
+        <h2>Be professional - use code style!</h2>
+        <img src="img/beautiful-code1.png" alt=""/>
+    </section>
+    <section>
+        <h2>Code Style Guides</h2>
+
+        <p>
+            <a href="https://wiki.jira.rocket-internet.de/download/attachments/18842776/RocketCodingGuidelines.pdf">
+                Rocket Guide
+            </a>
+            <br/><br/>
+            <a href="https://wiki.jira.rocket-internet.de/display/RELEASE/Coding+Guidelines">
+                Local Guide
+            </a>
+            <br/><br/>
+            If your commit brake code style - you receive <br/>
+            <span style="color:#C00; font-weight: bolder;">BIG RED EMAIL</span><br/>
+            from Jenkins
+        </p>
+    </section>
+
+</section>
+<section>
+    <h2>
+        Don't forget: git push :-)
+    </h2>
+
+    <p>
+        <ul style="list-style: none">
+            <li>Presentation Link: <a href="http://slides.lzd.co/git" target="_blank">http://slides.lzd.co/git</a></li>
+            <li>Source: <a href="https://github.com/nizsheanez/lzd-git-intro.git" target="_blank">https://github.com/nizsheanez/lzd-git-intro.git</a></li>
+        </ul>
+    </p>
+    <br/>
+    <p>
+        <small>Author - Alex Sharov</small>
+    </p>
+</section>
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            } },
+            { src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } }
+        ]
+    });
+
+    var p = document.getElementsByClassName('noident');
+    for (var i = 0; i < p.length; ++i) {
+        p[i].textContent = p[i].textContent.replace(/^\s+/mg, "");
+    }
+
+</script>
+
+</body>
+</html>
