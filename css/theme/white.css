@@ -223,6 +223,16 @@ h3 {
     opacity: 1;
     position: absolute; }
 
+.reveal pre code{
+    /*font-size: 50%;*/
+}
+.reveal pre {
+    word-wrap: normal;
+    overflow:auto;
+    font-size: 50% !important;
+    box-shadow: none;
+    border: none;
+}
 /* Octicon Title Slide */
 .title-icon {
     font-size: 300% !important;
