@@ -48,117 +48,114 @@
     </p>
 </section>
 
+<section>
+    <h2>What we want?</h2>
+
+    <p>
+    <ul>
+        <li>Execution Speed</li>
+        <li>Maintain Complexity</li>
+    </ul>
+    </p>
+</section>
 
 <section>
-    <section>
-        <h2>What we want?</h2>
+    <h2>1) Execution Speed</h2>
+</section>
 
-        <p>
-        <ul>
-            <li>Execution Speed</li>
-            <li>Maintain Complexity</li>
-        </ul>
-        </p>
-    </section>
+<section>
+    <h2>Why tests are slow</h2>
+
+    <p>
+    <ul>
+        <li>Check payment by card: <br/>
+            <small>go home, go random category, put something in cart, push button checkout, register new
+                customer,
+                <br/><b>pay by card</b>
+            </small>
+        </li>
+        <br/>
+        <li>Check payment by bank: <br/>
+            <small>go home, go random category, put something in cart, push button checkout, register new
+                customer,
+                <br/><b>pay by bank</b>
+            </small>
+        </li>
+        <br/>
+        <li>Check payment by cash: <br/>
+            <small>go home, go random category, put something in cart, push button checkout, register new
+                customer,
+                <br/><b>pay by cash</b>
+            </small>
+        </li>
+        <br/>
+    </ul>
+    </p>
 
 </section>
 
 <section>
-    <section>
-        <h2>1) Execution Speed</h2>
-    </section>
-    <section>
-        <h2>Why tests are slow</h2>
+    <h2>1 test for 1 test case</h2>
 
-        <p>
-        <ul>
-            <li>Check payment by card: <br/>
-                <small>go home, go random category, put something in cart, push button checkout, register new
-                    customer,
-                    <br/><b>pay by card</b>
-                </small>
-            </li>
-            <br/>
-            <li>Check payment by bank: <br/>
-                <small>go home, go random category, put something in cart, push button checkout, register new
-                    customer,
-                    <br/><b>pay by bank</b>
-                </small>
-            </li>
-            <br/>
-            <li>Check payment by cash: <br/>
-                <small>go home, go random category, put something in cart, push button checkout, register new
-                    customer,
-                    <br/><b>pay by cash</b>
-                </small>
-            </li>
-            <br/>
-        </ul>
-        </p>
+    <p>
+    <ul>
+        <li>Test 1 - check adding product to cart - and nothing more</li>
+        <li>Test 2 - check registration - and nothing more</li>
+        <li>Test 3 - check pay by card - and nothing more</li>
+    </ul>
+    </p>
 
-    </section>
+    <h2>Point 1: Keep tests simple</h2>
+</section>
 
-    <section>
-        <h2>1 test for 1 test case</h2>
+<section>
+    <h2>How we can skip some steps?</h2>
+    <br/>
+    <br/>
+    <h2>Point 2: Application must have QA API</h2>
 
-        <p>
-        <ul>
-            <li>Test 1 - check adding product to cart - and nothing more</li>
-            <li>Test 2 - check registration - and nothing more</li>
-            <li>Test 3 - check pay by card - and nothing more</li>
-        </ul>
-        </p>
+</section>
 
-        <h2>Point 1: Keep tests simple</h2>
-    </section>
+<section>
+    <h2>QA API</h2>
 
-    <section>
-        <h2>How we can skip some steps?</h2>
-        <br/>
-        <br/>
-        <h2>Point 2: Application must have QA API</h2>
+    <p>
+    <ul>
+        <li>Fast data preparing</li>
+        <li>If you need create new user, or put products to cart - it can help fast</li>
+        <li>Universal access to data. [Get/Edit/Rest to default] user data</li>
+        <li>If it's parallel running tests - they should to lock users</li>
+    </ul>
+    </p>
 
-    </section>
-    <section>
-        <h2>QA API</h2>
+    <h2>Point 3: Standardise QA API</h2>
 
-        <p>
-        <ul>
-            <li>Fast data preparing</li>
-            <li>If you need create new user, or put products to cart - it can help fast</li>
-            <li>Universal access to data. [Get/Edit/Rest to default] user data</li>
-            <li>If it's parallel running tests - they should to lock users</li>
-        </ul>
-        </p>
+</section>
 
-        <h2>Point 3: Standardise QA API</h2>
+<section>
+    <h2>Don't sleep!</h2>
 
-    </section>
-    <section>
-        <h2>Don't sleep!</h2>
-
-        <p>
-        <a href="https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/checkout.rb">https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/checkout.rb</a>
-        <pre>
+    <p>
+    <a href="https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/checkout.rb">https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/checkout.rb</a>
+    <pre>
 find(:css, '#tab_IPay88_option').click
 # This sleep is necessary due o new 3 step checkout cart
 # When we change netween payment methods, min-cart does a ajax update
 # And if we try to proceed to checkout when mini cart is till updating
 # A error message appears, so we need to wait a little for it,
 sleep 5
-    </pre>
-        </p>
+</pre>
+    </p>
 
-        <h2>Point 4: You want sleep - you need QA API</h2>
+    <h2>Point 4: You want sleep - you need QA API</h2>
 
-    </section>
+</section>
 
+<section>
+    <h2>Want do double cycle in test - use QA API</h2>
 
-    <section>
-        <h2>Want do double cycle in test - use QA API</h2>
-
-        <p>
-        <pre>
+    <p>
+    <pre>
 #go to each product line in page
 for i in 1..product_group.length
   product_in_group = page.all(:xpath, "//*[@id='productsCatalog']/li[#{i}]/ul/li")
@@ -182,36 +179,33 @@ for i in 1..product_group.length
     end
   end
 end
-        </pre>
-        </p>
-
-
-    </section>
-
-    <section>
-        <h2>You should can run test isolated</h2>
-
-        <p>
-        <ul>
-            <li>Otherwise you never parallel it</li>
-            <li>Otherwise fail of test will not show you what broken in application</li>
-        </ul>
-        </p>
-
-        <h2>Point 5: Keep tests isolation</h2>
-
-    </section>
+    </pre>
+    </p>
 
 </section>
 
 <section>
-    <section>
-        <h2>2) Maintain Complexity</h2>
-    </section>
-    <section>
-        <h2>BDD</h2>
-        <p>
-            <pre>
+    <h2>You should can run test isolated</h2>
+
+    <p>
+    <ul>
+        <li>Otherwise you never parallel it</li>
+        <li>Otherwise fail of test will not show you what broken in application</li>
+    </ul>
+    </p>
+
+    <h2>Point 5: Keep tests isolation</h2>
+
+</section>
+
+<section>
+    <h2>2) Maintain Complexity</h2>
+</section>
+
+<section>
+    <h2>BDD</h2>
+    <p>
+        <pre>
   Scenario: Register new user
     When I click on login button
     Then I should see login overlay
@@ -225,65 +219,68 @@ end
     Then I should see login overlay
     And I reuse new user credentials
     Then I should be logged in
-                </pre>
-        </p>
-        <h2>Very simple outside</h2>
+            </pre>
+    </p>
+    <h2>Very simple outside</h2>
 
+    <br/>
+</section>
+
+<section>
+    <h2>BDD - inside</h2>
+    <p>
+    <ul>
+        <li>IDE - become useless</li>
+        <li>Regular Expressions</li>
+        <li>Just moving complexity from one point to another</li>
+    </ul>
+    </p>
+    <h2>Point 6: BDD does not simplify your tests</h2>
+    <br/>
+    <h2>BDD made for marketing, not for testing</h2>
+</section>
+
+<section>
+    <h2>Acceptance tests related with markup</h2>
+
+    <p>
+        Split: <b>"logic of UI"</b> and <b>"logic of App"</b>
         <br/>
-    </section>
-    <section>
-        <h2>BDD - inside</h2>
-        <p>
-        <ul>
-            <li>IDE - become useless</li>
-            <li>Regular Expressions</li>
-            <li>Just moving complexity from one point to another</li>
-        </ul>
-        </p>
-        <h2>Point 6: BDD does not simplify your tests</h2>
         <br/>
-        <h2>BDD made for marketing, not for testing</h2>
-    </section>
-    <section>
-        <h2>Acceptance tests related with markup</h2>
+        Then on change markup your tests will possible to repair in one place: <br/>
+        class which contains "logic of UI"
+    </p>
 
-        <p>
-            Split: <b>"logic of UI"</b> and <b>"logic of App"</b>
-            <br/>
-            <br/>
-            Then on change markup your tests will possible to repair in one place: <br/>
-            class which contains "logic of UI"
-        </p>
+    <h2>Point 7: Use Pattern PageObject</h2>
 
-        <h2>Point 7: Use Pattern PageObject</h2>
+</section>
 
-    </section>
-    <section>
-        <h2>Don't use XPATH</h2>
+<section>
+    <h2>Don't use XPATH</h2>
 
-        <p>
-            <a href="https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/cart.rb">https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/cart.rb</a>
-                <pre>
+    <p>
+        <a href="https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/cart.rb">https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/cart.rb</a>
+            <pre>
 #select random product in product group
 using_wait_time 10 do
 find(:xpath,
     "//*[@id='productsCatalog']/li[#{random_product_group.to_s}]/ul/li[#{random_product_in_group.to_s}]/div/a[contains(@class,'itm-link')]/span[@class='itm-productInfo']").click
 end
-                </pre>
-        </p>
+            </pre>
+    </p>
 
-        <h2>Alleluia that we have comment</h2>
-        <br/>
+    <h2>Alleluia that we have comment</h2>
+    <br/>
 
-        <h2>Point 8: Css selectors readable than XPATH</h2>
+    <h2>Point 8: Css selectors readable than XPATH</h2>
 
-    </section>
+</section>
 
-    <section>
-        <h2>Don't use content</h2>
+<section>
+    <h2>Don't use content</h2>
 
-        <p>
-        <a href="https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/homepage.rb">https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/homepage.rb</a>
+    <p>
+    <a href="https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/homepage.rb">https://svn.rocket-internet.de/svn/SHOP/cucumber_save/profiles/lazada/step_definitions/homepage.rb</a>
 <pre>
 when 'MY'
   find(:xpath,"//li/a[contains(@href,'order-tracking')]").click
@@ -297,92 +294,87 @@ when 'VN'
   find(:xpath,"//li/a[contains(@href,'kiem-tra-don-hang')]").click
 end
 </pre>
-        </p>
+    </p>
 
-        <h2>Point 9: Markup much stable then content</h2>
-
-    </section>
-    <section>
-        <h2>You can use special classes for tests</h2>
-
-        <p>
-            They are more stable than markup,<br/>
-            just need sometimes to kick markup-guys
-        </p>
-
-        <h2>Point 10: Yes, we have Alice_Component_Selenium!</h2>
-
-    </section>
+    <h2>Point 9: Markup much stable then content</h2>
 
 </section>
 
 <section>
-    <section>
-        <h2>3) Other stuffs</h2>
-    </section>
-    <section>
-        <h2>Collecting js errors</h2>
+    <h2>You can use special classes for tests</h2>
 
-        <p>
-            Just create global object and put there all client errors, <br/>
-            after test get it and check.
-        </p>
+    <p>
+        They are more stable than markup,<br/>
+        just need sometimes to kick markup-guys
+    </p>
 
-        <h2>Point 11: Client side must have QA API</h2>
-    </section>
+    <h2>Point 10: Yes, we have Alice_Component_Selenium!</h2>
 
-    <section>
-        <h2>Coverage</h2>
+</section>
 
-        <p>
-        <ul>
-            <li>Acceptance test can't has coverage of code, but it can has coverage of All Features</li>
-            <li>One way is to put test by folders like 'SEAAMZ-1024'</li>
-        </ul>
-        </p>
+<section>
+    <h2>3) Other stuffs</h2>
+</section>
 
-        <h2>Point 12: Measure Coverage</h2>
+<section>
+    <h2>Collecting js errors</h2>
 
-    </section>
+    <p>
+        Just create global object and put there all client errors, <br/>
+        after test get it and check.
+    </p>
 
-    <section>
-        <h2>Tests are profitable only if they fast</h2>
+    <h2>Point 11: Client side must have QA API</h2>
+</section>
 
-        <p>
-        <ul>
-            <li>Don't sleep</li>
-            <li>Parallelise</li>
-            <li>QA API</li>
-            <li>Decrease queue in Jenkins</li>
-        </ul>
-        </p>
+<section>
+    <h2>Coverage</h2>
 
+    <p>
+    <ul>
+        <li>Acceptance test can't has coverage of code, but it can has coverage of All Features</li>
+        <li>One way is to put test by folders like 'SEAAMZ-1024'</li>
+    </ul>
+    </p>
 
-    </section>
+    <h2>Point 12: Measure Coverage</h2>
 
-    <section>
-        <h2>Glossary</h2>
+</section>
 
-        <p>
-        <ul>
-            <li>Point 1: Keep tests simple</li>
-            Point 2: Application must have QA API
-            <li>Point 3: Standardise QA API</li>
-            <li>Point 4: You want sleep - you need QA API</li>
-            <li>Point 5: Keep tests isolation</li>
-            <li>Point 6: BDD does not simplify your tests</li>
-            <li>Point 7: Use Pattern PageObject</li>
-            <li>Point 8: Css selectors readable than XPATH</li>
-            <li>Point 9: Markup much stable then content</li>
-            <li>Point 10: Yes, we have Alice_Component_Selenium!</li>
+<section>
+    <h2>Tests are profitable only if they fast</h2>
 
-            <li>Point 11: Client side must have QA API</li>
-            <li>Point 12: Measure Coverage</li>
-            <li>Point 13: Keep tests fast</li>
-        </ul>
-        </p>
+    <p>
+    <ul>
+        <li>Don't sleep</li>
+        <li>Parallelise</li>
+        <li>QA API</li>
+        <li>Decrease queue in Jenkins</li>
+    </ul>
+    </p>
 
-    </section>
+</section>
+
+<section>
+    <h2>Glossary</h2>
+
+    <p>
+    <ul>
+        <li>Point 1: Keep tests simple</li>
+        <li>Point 2: Application must have QA API</li>
+        <li>Point 3: Standardise QA API</li>
+        <li>Point 4: You want sleep - you need QA API</li>
+        <li>Point 5: Keep tests isolation</li>
+        <li>Point 6: BDD does not simplify your tests</li>
+        <li>Point 7: Use Pattern PageObject</li>
+        <li>Point 8: Css selectors readable than XPATH</li>
+        <li>Point 9: Markup much stable then content</li>
+        <li>Point 10: Yes, we have Alice_Component_Selenium!</li>
+        <li>Point 11: Client side must have QA API</li>
+        <li>Point 12: Measure Coverage</li>
+        <li>Point 13: Keep tests fast</li>
+    </ul>
+    </p>
 
 </section>
 
