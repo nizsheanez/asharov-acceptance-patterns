@@ -56,14 +56,13 @@
         <p>
         <ul>
             <li>Execution Speed</li>
-            <li>Maintenance Complexity</li>
+            <li>Maintain Complexity</li>
         </ul>
         </p>
     </section>
 
 </section>
 
-<!-- Example of nested vertical slides -->
 <section>
     <section>
         <h2>1) Execution Speed</h2>
@@ -207,11 +206,43 @@ end
 
 <section>
     <section>
-        <h2>2) Maintenance Complexity</h2>
+        <h2>2) Maintain Complexity</h2>
     </section>
     <section>
-        <h2>Point 6 == Point 1: Keep tests simple</h2>
+        <h2>BDD</h2>
+        <p>
+            <pre>
+  Scenario: Register new user
+    When I click on login button
+    Then I should see login overlay
+    When I click on new user button
+    And I enter new user information
+    Then I should be logged in
+    When I click on logout button
+    Then I should be logged out
+    When I go to the homepage
+    When I click on login button
+    Then I should see login overlay
+    And I reuse new user credentials
+    Then I should be logged in
+                </pre>
+        </p>
+        <h2>Very simple outside</h2>
+
         <br/>
+    </section>
+    <section>
+        <h2>BDD - inside</h2>
+        <p>
+        <ul>
+            <li>IDE - become useless</li>
+            <li>Regular Expressions</li>
+            <li>Just moving complexity from one point to another</li>
+        </ul>
+        </p>
+        <h2>Point 6: BDD does not simplify your tests</h2>
+        <br/>
+        <h2>BDD made for marketing, not for testing</h2>
     </section>
     <section>
         <h2>Acceptance tests related with markup</h2>
@@ -339,7 +370,7 @@ end
             <li>Point 3: Standardise QA API</li>
             <li>Point 4: You want sleep - you need QA API</li>
             <li>Point 5: Keep tests isolation</li>
-            <li>Point 6 == Point 1: Keep tests simple</li>
+            <li>Point 6: BDD does not simplify your tests</li>
             <li>Point 7: Use Pattern PageObject</li>
             <li>Point 8: Css selectors readable than XPATH</li>
             <li>Point 9: Markup much stable then content</li>
@@ -357,13 +388,13 @@ end
 
 <section>
     <h2>
-        Don't forget: git push :-)
+        Thanks
     </h2>
 
     <p>
     <ul style="list-style: none">
-        <li>Presentation Link: <a href="http://slides.lzd.co/git" target="_blank">http://slides.lzd.co/git</a></li>
-        <li>Source: <a href="https://github.com/nizsheanez/lzd-git-intro.git" target="_blank">https://github.com/nizsheanez/lzd-git-intro.git</a>
+        <li>Presentation Link: <a href="http://slides.lzd.co/acceptance_patterns" target="_blank">http://slides.lzd.co/acceptance_patterns</a></li>
+        <li>Source: <a href="https://github.com/nizsheanez/lzd-acceptance-patterns.git" target="_blank">https://github.com/nizsheanez/lzd-acceptance-patterns.git</a>
         </li>
     </ul>
     </p>
