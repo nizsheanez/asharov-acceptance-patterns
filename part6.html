@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Алексей Шаров - Часть 6. Паттерны Приемочнго тестирования</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="Alex Sharov">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write('<link rel="stylesheet" href="css/print/' + ( window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h1>Часть 6</h1>
+
+            <br/>
+
+            <h3>Планируем внедрение</h3>
+        </section>
+
+        <section>
+            <h3>
+                <b>
+                    Если у вас уже есть тесты
+                </b>
+            </h3>
+            <br/>
+
+            <p>
+            <ul>
+                <li>Заведите задачи по внедрению всех фишек/шаблонов из курса</li>
+                <li>Когда тесты будут быстрыми, начните из запускать постоянно</li>
+                <li>После завершения всех задач, поставьте 1 дополнительную задачу:
+                    Ревью и рефакторинг тестов с целью их упрощения (QaApi в том числе)
+                </li>
+            </ul>
+            </p>
+        </section>
+
+        <section>
+            <h3>
+                <b>
+                    Если никаких тестов еще нет
+                </b>
+            </h3>
+            <br/>
+
+            <p>
+            <ul>
+                <li>Найти узкие места (избавить программистов/тестировщиков/себя от проблем)</li>
+                <li>Завести задачи про узкие места</li>
+                <li>Начать выполнять эти задачи (первые 3-5 дней не больше 1-2 человек)</li>
+                <li>Дайте им этот курс</li>
+                <li>Когда узкие места будут покрыты тестами, создать задачи по внедрению фишек/шаблонов из курса</li>
+                <li>Начать покрывать весь функционал</li>
+                <li>Если есть CI сервер - создать сборку</li>
+                <li>Если нет CI сервера - научить всех запускать тесты</li>
+                <li>Распараллелить что-бы тест работали быстро</li>
+                <li>Доп. Задача на рефакторинг и упрощение</li>
+            </ul>
+                
+            </p>
+        </section>
+
+
+        <section>
+            <h3>
+                <b>
+                    Шаблон Последний
+                    <br/>
+                    Измеряйте покрытие
+                </b>
+            </h3>
+            <br/>
+
+            <p>
+                Покрытие для приемочных тестов меряется: <br/>
+                либо страницами(api вызовами) <br/>
+                либо фичами
+            </p>
+
+        </section>
+
+        <section>
+
+            <h3>
+                <b>
+                    Шаблон 4
+                    <br/>
+                    Исключите бизнес-логику из QaApi
+                </b>
+            </h3>
+            <br/>
+
+            <p>
+                QaApi должен обращаться к уже существующим методам проекта <br/><br/>
+                Либо быть предельно простым: <br/>
+                в проекте нет кода для Users Pool, <br/>
+                но это всего 2 простых запроса в базу
+            </p>
+        </section>
+
+        <section>
+            <h1>Часть 5</h1>
+
+            <br/>
+
+            <h3>Шаблоны упрощения и читабельности</h3>
+            <br/>
+
+            <p>
+                Главное правило - чем дебильнее тест, тем легче чинить <br/><br/>
+                Второе правило - чем меньше дублирование бизнес-логики, тем реже тесты устаревают <br/><br/>
+                Третье правило - не опирайтесь на верстку, будут точнее результаты
+            </p>
+        </section>
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            } },
+            { src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } }
+        ]
+    });
+
+    var p = document.getElementsByClassName('noident');
+    for (var i = 0; i < p.length; ++i) {
+        p[i].textContent = p[i].textContent.replace(/^\s+/mg, "");
+    }
+
+</script>
+
+</body>
+</html>

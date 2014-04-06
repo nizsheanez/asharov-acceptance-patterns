@@ -45,19 +45,20 @@ img {
     text-shadow: none; }
 
 /* Background Watermark */
-body::before {
+.logo {
     content: "";
     /*-webkit-mask-box-image: url(backgrounds/lazada.png) 100% 100% 0 0;*/
     /*background: #4183c4;*/
-    background-image: url(backgrounds/lazada.png);
+    /*background-image: url(backgrounds/lazada.png);*/
     background-size: 69px 25px;
     background-repeat:no-repeat;
     position: absolute;
+    font-size: 30%;
     /*opacity: .78;*/
-    width: 69px;
+    width: 169px;
     height: 25px;
     left: 1%;
-    bottom: 1%; }
+    bottom: 2%; }
 
 /* Authorship/Info footer*/
 body::after {
