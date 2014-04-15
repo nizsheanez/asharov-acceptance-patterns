@@ -1,0 +1,18 @@
+.vjs-control-bar {
+    height: 0 !important;
+}
+
+.video-js {
+    background: transparent;
+}
+
+/*.vjs-paused, */
+.vjs-time-controls,
+.vjs-time-divider,
+.vjs-fullscreen-control,
+.vjs-volume-control,
+.vjs-mute-control,
+.vjs-subtitles-button,
+.vjs-menu-button {
+    display: none !important;
+}
